@@ -19,4 +19,4 @@ LABEL maintainer="@singe at SensePost <research@sensepost.com>"
 COPY --from=builder /hashcat/hashcat /hashcat/
 ENV PATH $PATH:/hashcat
 EXPOSE 6863
-CMD /hashcat/hashcat --brain-server
+ENTRYPOINT [ "/hashcat/hashcat", "--brain-server" ]
