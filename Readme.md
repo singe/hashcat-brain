@@ -36,6 +36,13 @@ To keep like simple, this repository has a simple wrapper for running hashcat wh
 
 Notice the password sent to the client is the same as that given when the brain was run.
 
+## Configuring the Brain
+
+hashcat's brain config is done via the command line, and these can just be passed as arguments to the docker container. For example to enable the attack mode only feature, you would run:
+```
+docker run -p 6863 singelet/hashcat-brain:latest --brain-client-features=2
+```
+
 ## Brain Wrapper Explained
 
 The brain wrapper just grabs the host and port information from docker. You can do the same by running:
