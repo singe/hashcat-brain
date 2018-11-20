@@ -8,10 +8,16 @@ RUN apk update && apk add \
   git \
 && rm -rf /var/cache/apk/*
 WORKDIR /
-RUN git clone --depth=1 https://github.com/hashcat/hashcat \
+ARG commit=490050ecb310f484d928e9f9f52fc8b8afef1c89
+RUN wget -O hashcat.zip https://github.com/hashcat/hashcat/archive/$commit.zip \
+&& unzip hashcat.zip \
+&& mv hashcat-$commit hashcat \
 && cd hashcat \
-&& git submodule update --init \
-&& make -j2 
+&& make -j2
+#RUN git clone --depth=1 https://github.com/hashcat/hashcat \
+#&& cd hashcat \
+#&& git submodule update --init \
+#&& make -j2 
 
 From alpine:latest
 LABEL maintainer="@singe at SensePost <research@sensepost.com>"
