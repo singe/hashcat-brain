@@ -1,14 +1,13 @@
 FROM alpine:latest as builder
 LABEL maintainer="@singe at SensePost <research@sensepost.com>"
-LABEL hashcat-version="5.0.0"
 
-RUN apk update && apk add \
-  build-base \
-  linux-headers \
-  git \
-&& rm -rf /var/cache/apk/*
+RUN apk update && apk --no-cache add \
+    build-base \
+    linux-headers \
+    git \
+  && rm -rf /var/cache/apk/*
 WORKDIR /
-ARG commit=490050ecb310f484d928e9f9f52fc8b8afef1c89
+ARG commit=38e97bd89ada27dd07c74046889b102b34686781
 RUN wget -O hashcat.zip https://github.com/hashcat/hashcat/archive/$commit.zip \
 && unzip hashcat.zip \
 && mv hashcat-$commit hashcat \

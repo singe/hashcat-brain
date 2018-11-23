@@ -38,9 +38,9 @@ Notice the password sent to the client is the same as that given when the brain 
 
 ## Configuring the Brain
 
-hashcat's brain config is done via the command line, and these can just be passed as arguments to the docker container. For example to enable the attack mode only feature, you would run:
+hashcat's brain config is done via the command line, and these can just be passed as arguments to the docker container. For example to whitelist specific sessions:
 ```
-docker run -p 6863 singelet/hashcat-brain:latest --brain-client-features=2
+docker run -p 6863 singelet/hashcat-brain:latest --brain-session-whitelist=0x2ae611db
 ```
 
 ## Brain Wrapper Explained
@@ -53,3 +53,7 @@ Then passing the info to hashcat like so:
 ```
 hashcat --brain-client --brain-host <IP> --brain-port <port> --brain-password <password> <normal hashcat options>
 ```
+
+## hashcat version tracking
+
+I've chosen to try keep up to date with HEAD of the [main hashcat repo](https://github.com/hashcat/hashcat). Invariably I won't be as up-to-date as them. You can see which commit I'm at from the "commit" ARG in the Dockerfile. And if you want to build you own for a different commit, just change that.
