@@ -7,7 +7,7 @@ RUN apk update && apk --no-cache add \
     git \
   && rm -rf /var/cache/apk/*
 WORKDIR /
-ARG commit=38e97bd89ada27dd07c74046889b102b34686781
+ARG commit=153a8704e05a8c20d325491e53a9c886ee8f8377
 RUN wget -O hashcat.zip https://github.com/hashcat/hashcat/archive/$commit.zip \
 && unzip hashcat.zip \
 && mv hashcat-$commit hashcat \
